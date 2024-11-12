@@ -1,15 +1,15 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const assets = [
-  "https://sri-hastuti-pwa.vercel.app/",                     // Pastikan halaman utama tersedia
-  "https://sri-hastuti-pwa.vercel.app/index.html",            // Halaman utama
-  "https://sri-hastuti-pwa.vercel.app/style.css",             // File CSS
-  "https://sri-hastuti-pwa.vercel.app/script.js",             // File JavaScript
-  "https://sri-hastuti-pwa.vercel.app/manifest.json",         // File manifest
-  "https://sri-hastuti-pwa.vercel.app/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
-  "https://sri-hastuti-pwa.vercel.app/image.jpeg",            // Gambar lainnya
-  "https://sri-hastuti-pwa.vercel.app/certificate1.png",      // Sertifikat 1
-  "https://sri-hastuti-pwa.vercel.app/certificate2.png",      // Sertifikat 2
-  "https://sri-hastuti-pwa.vercel.app/certificate3.png"       // Sertifikat 3
+  "/",                     // Pastikan halaman utama tersedia
+  "/index.html",            // Halaman utama
+  "/style.css",             // File CSS
+  "/script.js",             // File JavaScript
+  "/manifest.json",         // File manifest
+  "/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
+  "/image.jpeg",            // Gambar lainnya
+  "/certificate1.png",      // Sertifikat 1
+  "/certificate2.png",      // Sertifikat 2
+  "/certificate3.png"       // Sertifikat 3
 ];
 
 self.addEventListener('install', event => {
