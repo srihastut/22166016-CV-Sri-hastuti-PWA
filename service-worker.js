@@ -18,10 +18,16 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        return cache.addAll(assets);
+        return cache.addAll(assets)
+          .then(() => {
+            console.log('Assets cached successfully');
+          })
+          .catch(error => {
+            console.error('Failed to cache some assets:', error);
+          });
       })
       .catch(error => {
-        console.error('Failed to cache assets:', error);
+        console.error('Failed to open cache:', error);
       })
   );
 });
