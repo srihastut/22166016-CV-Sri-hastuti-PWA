@@ -51,7 +51,7 @@ self.addEventListener('fetch', event => {
           return response;
         }
         return fetch(event.request);
-      })catch(error => {
+      }).catch(error => {
         console.error('Fetch failed; returning offline page instead.', error);
       })
   );
