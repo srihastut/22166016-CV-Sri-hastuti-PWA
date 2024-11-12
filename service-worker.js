@@ -1,15 +1,15 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const assets = [
-  "/22166015-CV-Sri-hastuti-PWA/",                     // Pastikan halaman utama tersedia
-  "/22166015-CV-Sri-hastuti-PWA/index.html",            // Halaman utama
-  "/22166015-CV-Sri-hastuti-PWA/style.css",             // File CSS
-  "/22166015-CV-Sri-hastuti-PWA/script.js",             // File JavaScript
-  "/22166015-CV-Sri-hastuti-PWA/manifest.json",         // File manifest
-  "/22166015-CV-Sri-hastuti-PWA/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
-  "/22166015-CV-Sri-hastuti-PWA/image.jpeg",            // Gambar lainnya
-  "/22166015-CV-Sri-hastuti-PWA/certificate1.png",      // Sertifikat 1
-  "/22166015-CV-Sri-hastuti-PWAo/certificate2.png",      // Sertifikat 2
-  "/22166015-CV-Sri-hastuti-PWA/certificate3.png"       // Sertifikat 3
+  "https://sri-hastuti-pwa.vercel.app/",                     // Pastikan halaman utama tersedia
+  "https://sri-hastuti-pwa.vercel.app/index.html",            // Halaman utama
+  "https://sri-hastuti-pwa.vercel.app/style.css",             // File CSS
+  "https://sri-hastuti-pwa.vercel.app/script.js",             // File JavaScript
+  "https://sri-hastuti-pwa.vercel.app/manifest.json",         // File manifest
+  "https://sri-hastuti-pwa.vercel.app/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
+  "https://sri-hastuti-pwa.vercel.app/image.jpeg",            // Gambar lainnya
+  "https://sri-hastuti-pwa.vercel.app/certificate1.png",      // Sertifikat 1
+  "https://sri-hastuti-pwa.vercel.app/certificate2.png",      // Sertifikat 2
+  "https://sri-hastuti-pwa.vercel.app/certificate3.png"       // Sertifikat 3
 ];
 
 self.addEventListener('install', event => {
@@ -63,7 +63,7 @@ self.addEventListener('message', event => {
     const title = 'Hallo!';
     const options = {
       body: 'Selamat Datang di Web Portfolio Tuti. Terima kasih telah mengunjungi!',
-      icon: '/uts-protofolio/icon-192x192.png' // Path ikon diperbaiki
+      icon: '/https://sri-hastuti-pwa.vercel.app/icon-192x192.png' // Path ikon diperbaiki
     };
 
     if (Notification.permission === 'granted') {
@@ -78,6 +78,6 @@ self.addEventListener('message', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close(); // Menutup notifikasi saat diklik
   event.waitUntil(
-    clients.openWindow('https://srihastut.github.io/22166015-CV-Sri-hastuti-PWA/') // URL yang benar untuk membuka portfolio
+    clients.openWindow('https://sri-hastuti-pwa.vercel.app/') // URL yang benar untuk membuka portfolio
   );
 });
