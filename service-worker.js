@@ -47,11 +47,9 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Jika ada di cache, return file dari cache
         if (response) {
           return response;
         }
-        // Jika tidak ada di cache, fetch dari network
         return fetch(event.request);
       })
   );
@@ -63,7 +61,7 @@ self.addEventListener('message', event => {
     const title = 'Hallo!';
     const options = {
       body: 'Selamat Datang di Web Portfolio Tuti. Terima kasih telah mengunjungi!',
-      icon: '/https://sri-hastuti-pwa.vercel.app/icon-192x192.png' // Path ikon diperbaiki
+      icon: '/icon-192x192.png' // Path ikon diperbaiki
     };
 
     if (Notification.permission === 'granted') {
@@ -76,8 +74,8 @@ self.addEventListener('message', event => {
 
 // Menangani klik pada notifikasi
 self.addEventListener('notificationclick', event => {
-  event.notification.close(); // Menutup notifikasi saat diklik
+  event.notification.close();
   event.waitUntil(
-    clients.openWindow('https://sri-hastuti-pwa.vercel.app/') // URL yang benar untuk membuka portfolio
+    clients.openWindow('/') // URL relatif ke halaman utama
   );
 });
