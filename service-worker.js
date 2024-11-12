@@ -18,19 +18,23 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        return cache.addAll(assets)
-          .then(() => {
-            console.log('Assets cached successfully');
+        return Promise.all(
+          assets.map(asset => {
+            return cache.add(asset).catch(error => {
+              console.error(`Failed to cache ${asset}:`, error);
+            });
           })
-          .catch(error => {
-            console.error('Failed to add assets to cache:', error);
-          });
+        );
+      })
+      .then(() => {
+        console.log('Assets cached successfully');
       })
       .catch(error => {
         console.error('Failed to open cache:', error);
       })
   );
 });
+
 
 // Activate Service Worker
 self.addEventListener('activate', event => {
