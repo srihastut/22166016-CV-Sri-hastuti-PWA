@@ -48,7 +48,6 @@ window.onscroll = () => {
   });
 };
 
-<script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js') // Gunakan path relatif
       .then(registration => {
@@ -58,7 +57,6 @@ window.onscroll = () => {
         console.log('Service Worker registration failed:', error);
       });
   }
-</script>
 
 
 // Fungsi toggle untuk Read More / Read Less
