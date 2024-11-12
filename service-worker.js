@@ -23,7 +23,6 @@ self.addEventListener('install', event => {
             console.log('Assets cached successfully');
           })
           .catch(error => {
-            console.error('Failed to cache some assets:', error);
           });
       })
       .catch(error => {
