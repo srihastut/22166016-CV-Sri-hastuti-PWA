@@ -7,9 +7,9 @@ const assets = [
   "/manifest.json",         // File manifest
   "/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
   "/image.jpeg",            // Gambar lainnya
-  "https://sri-hastuti-pwa.vercel.app//certificate1.png",      // Sertifikat 1
-  "https://sri-hastuti-pwa.vercel.app//certificate2.png",      // Sertifikat 2
-  "https://sri-hastuti-pwa.vercel.app//certificate3.png"       // Sertifikat 3
+  "/certificate1.png",      // Sertifikat 1
+  "/certificate2.png",      // Sertifikat 2
+  "/certificate3.png"       // Sertifikat 3
 ];
 
 self.addEventListener('install', event => {
