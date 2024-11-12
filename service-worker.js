@@ -73,7 +73,7 @@ self.addEventListener('message', event => {
     const title = 'Hallo!';
     const options = {
       body: 'Selamat Datang di Web Portfolio Tuti. Terima kasih telah mengunjungi!',
-      icon: 'https://sri-hastuti-pwa.vercel.app//icon-192x192.png' // Path ikon diperbaiki
+      icon: '/icon-192x192.png' // Path ikon diperbaiki
     };
 
     if (Notification.permission === 'granted') {
