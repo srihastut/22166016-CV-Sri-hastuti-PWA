@@ -48,28 +48,18 @@ window.onscroll = () => {
   });
 };
 
-// Pendaftaran Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/https://sri-hastuti-pwa.vercel.app/service-worker.js')
-    .then(registration => {
-      console.log('Service Worker registered with scope:', registration.scope);
-
-      // Mengirim pesan untuk meminta ukuran cache
-      if (navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage('get-cache-usage');
-      }
-
-      navigator.serviceWorker.addEventListener('message', event => {
-        if (event.data.type === 'cache-usage') {
-          const sizeInKB = (event.data.size / 1024).toFixed(2);
-          document.getElementById('cache-usage').textContent = `Cache usage: ${sizeInKB} KB`;
-        }
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js') // Gunakan path relatif
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.log('Service Worker registration failed:', error);
       });
-    })
-    .catch(error => {
-      console.error('Service Worker registration failed:', error);
-    });
-}
+  }
+</script>
+
 
 // Fungsi toggle untuk Read More / Read Less
 function toggleContent() {
