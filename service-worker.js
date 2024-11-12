@@ -38,7 +38,7 @@ self.addEventListener('activate', event => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
@@ -51,6 +51,8 @@ self.addEventListener('fetch', event => {
           return response;
         }
         return fetch(event.request);
+      })catch(error => {
+        console.error('Fetch failed; returning offline page instead.', error);
       })
   );
 });
