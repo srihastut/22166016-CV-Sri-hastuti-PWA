@@ -1,15 +1,15 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const assets = [
-  "/",                     
-  "/index.html",            
-  "/style.css",             
-  "/script.js",             
-  "/manifest.json",         
-  "/icon-192x192.png",      
-  "/image.jpeg",            
-  "/certificate1.png",      
-  "/certificate2.png",      
-  "/certificate3.png"       
+  "/",                     // Pastikan halaman utama tersedia
+  "/index.html",            // Halaman utama
+  "/style.css",             // File CSS
+  "/script.js",             // File JavaScript
+  "/manifest.json",         // File manifest
+  "/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
+  "/image.jpeg",            // Gambar lainnya
+  "/certificate1.png",      // Sertifikat 1
+  "/certificate2.png",      // Sertifikat 2
+  "/certificate3.png"       // Sertifikat 3
 ];
 
 self.addEventListener('install', event => {
@@ -21,7 +21,7 @@ self.addEventListener('install', event => {
         return Promise.all(
           assets.map(asset => {
             return cache.add(asset).catch(error => {
-              console.error(`Failed to cache ${asset}:`, error);
+              console.error(Failed to cache ${asset}:, error);
             });
           })
         );
@@ -34,6 +34,7 @@ self.addEventListener('install', event => {
       })
   );
 });
+
 
 // Activate Service Worker
 self.addEventListener('activate', event => {
@@ -56,8 +57,12 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        return response || fetch(event.request)
-          .catch(() => caches.match('/offline.html'));
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }).catch(error => {
+        console.error('Fetch failed; returning offline page instead.', error);
       })
   );
 });
@@ -68,7 +73,7 @@ self.addEventListener('message', event => {
     const title = 'Hallo!';
     const options = {
       body: 'Selamat Datang di Web Portfolio Tuti. Terima kasih telah mengunjungi!',
-      icon: '/icon-192x192.png'
+      icon: '/icon-192x192.png' // Path ikon diperbaiki
     };
 
     if (Notification.permission === 'granted') {
@@ -83,6 +88,6 @@ self.addEventListener('message', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   event.waitUntil(
-    clients.openWindow('/') 
+    clients.openWindow('/') // URL relatif ke halaman utama
   );
 });
