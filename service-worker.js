@@ -1,15 +1,15 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const assets = [
-  "/",                     // Pastikan halaman utama tersedia
-  "/index.html",            // Halaman utama
-  "/style.css",             // File CSS
-  "/script.js",             // File JavaScript
-  "/manifest.json",         // File manifest
-  "/icon-192x192.png",      // Ikon untuk notifikasi dan manifest
-  "/image.jpeg",            // Gambar lainnya
-  "/certificate1.png",      // Sertifikat 1
-  "/certificate2.png",      // Sertifikat 2
-  "/certificate3.png"       // Sertifikat 3
+  "/",                     
+  "/index.html",            
+  "/style.css",             
+  "/script.js",             
+  "/manifest.json",         
+  "/icon-192x192.png",      
+  "/image.jpeg",            
+  "/certificate1.png",      
+  "/certificate2.png",      
+  "/certificate3.png"       
 ];
 
 self.addEventListener('install', event => {
@@ -35,7 +35,6 @@ self.addEventListener('install', event => {
   );
 });
 
-
 // Activate Service Worker
 self.addEventListener('activate', event => {
   event.waitUntil(
@@ -57,12 +56,8 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }).catch(error => {
-        console.error('Fetch failed; returning offline page instead.', error);
+        return response || fetch(event.request)
+          .catch(() => caches.match('/offline.html'));
       })
   );
 });
@@ -73,7 +68,7 @@ self.addEventListener('message', event => {
     const title = 'Hallo!';
     const options = {
       body: 'Selamat Datang di Web Portfolio Tuti. Terima kasih telah mengunjungi!',
-      icon: '/icon-192x192.png' // Path ikon diperbaiki
+      icon: '/icon-192x192.png'
     };
 
     if (Notification.permission === 'granted') {
@@ -88,6 +83,6 @@ self.addEventListener('message', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   event.waitUntil(
-    clients.openWindow('/') // URL relatif ke halaman utama
+    clients.openWindow('/') 
   );
 });
